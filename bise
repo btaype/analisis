@@ -1,0 +1,28 @@
+function raiz = biseccion(f, a, b, tolerancia)
+
+  x = 0;
+  m = (a + b) / 2;
+
+  disp('|  Iter  |    a     |          m           |');
+
+
+  while abs(b - a) > tolerancia
+
+    fa = f(a);
+    fm = f(m);
+    if fa .* fm < 0
+      b = m;
+    else
+      a = m;
+    endif
+    x = x + 1;
+
+    fprintf('|  %4d  |  %0.6f  |   %0.6f   |\n', x, a, m);
+    m = (a + b) / 2;
+  endwhile
+
+
+  fprintf('|  %4d  |  %0.6f  |   %0.6f   |\n', x, a, m);
+
+  raiz = m;
+endfunction
